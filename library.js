@@ -15,6 +15,7 @@
 
 		Step 4: If all goes well, you'll be able to login/register via your OAuth endpoint credentials.
 	*/
+	var authUrl = 'http://sso.local/';
 
 	var User = module.parent.require('./user'),
 		Groups = module.parent.require('./groups'),
@@ -28,8 +29,8 @@
 		async = module.parent.require('async'),
 
 		constants = Object.freeze({
-			type: '',	// Either 'oauth' or 'oauth2'
-			name: '',	// Something unique to your OAuth provider in lowercase, like "github", or "nodebb"
+			type: 'oauth2',	// Either 'oauth' or 'oauth2'
+			name: 'embo',	// Something unique to your OAuth provider in lowercase, like "github", or "nodebb"
 			oauth: {
 				requestTokenURL: '',
 				accessTokenURL: '',
@@ -38,12 +39,12 @@
 				consumerSecret: ''
 			},
 			oauth2: {
-				authorizationURL: '',
-				tokenURL: '',
-				clientID: '',
-				clientSecret: ''
+				authorizationURL: authUrl + 'oauth/authorise',
+				tokenURL: authUrl + 'oauth/access_token',
+				clientID: 'nodebb-forum',
+				clientSecret: 'squirrel'
 			},
-			userRoute: ''	// This is the address to your app's "user profile" API endpoint (expects JSON)
+			userRoute: 'http://sso.local/api/user/'	// This is the address to your app's "user profile" API endpoint (expects JSON)
 		}),
 		configOk = false,
 		OAuth = {}, passportOAuth, opts;
@@ -140,7 +141,7 @@
 		// Everything else is optional.
 
 		// Find out what is available by uncommenting this line:
-		// console.log(data);
+		 console.log(data);
 
 		var profile = {};
 		profile.id = data.id;
