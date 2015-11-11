@@ -5,7 +5,7 @@
   "main": "library.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/julianlam/nodebb-plugin-sso-oauth"
+    "url": "https://github.com/TuarChaoimhin/nodebb-plugin-sso-oauth"
   },
   "keywords": [
     "nodebb",
